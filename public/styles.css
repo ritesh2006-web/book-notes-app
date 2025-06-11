@@ -131,3 +131,25 @@ form button {
 form button:hover {
   background-color: #2e7d32;
 }
+
+
+/* ---------- Delete Button ---------- */
+.delete-form {
+  display: inline;
+  margin-top: 10px;
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+}
