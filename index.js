@@ -53,6 +53,18 @@ app.post("/new", async (req, res) => {
     }
 })
 
+//update
+app.post("/delete", async (req, res) => {
+  const bookId = req.body.id;
+  try {
+    await db.query("DELETE FROM books WHERE id = $1", [bookId]);
+    res.redirect("/");
+  } catch (err) {
+    console.error("Error deleting book:", err);
+    res.status(500).send("Database error during deletion.");
+  }
+});
+
 app.listen(port,()=>{
     console.log(`Server running at port ${port}`);
 })
