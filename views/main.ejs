@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+
+<section>
+  <h2>📖 Your Book Notes</h2>
+
+  <% if (books.length === 0) { %>
+    <p>No notes added yet.</p>
+  <% } else { %>
+    <ul>
+      <% books.forEach(book => { %>
+        <li>
+          <h3><%= book.book_name %> <small>by <%= book.book_author %></small></h3>
+          <p><%= book.notes_content %></p>
+        </li>
+        <hr>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <a href="/new" class="btn">➕ Add Another Note</a>
+</section>
+
+</main>
+</body>
+</html>
