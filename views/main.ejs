@@ -1,25 +1,39 @@
-<%- include("partials/header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Notes</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>📚 Book Notes</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/new">Add New</a>
+    </nav>
+  </header>
 
-<section>
-  <h2>📖 Your Book Notes</h2>
+  <section>
+    <h2>📖 Your Book Notes</h2>
 
-  <% if (books.length === 0) { %>
-    <p>No notes added yet.</p>
-  <% } else { %>
-    <ul>
-      <% books.forEach(book => { %>
-        <li>
-          <h3><%= book.book_name %> <small>by <%= book.book_author %></small></h3>
-          <p><%= book.notes_content %></p>
-        </li>
-        <hr>
-      <% }) %>
-    </ul>
-  <% } %>
-
-  <a href="/new" class="btn">➕ Add Another Note</a>
-</section>
-
-</main>
+    <% if (books.length === 0) { %>
+      <p>No notes added yet. <a href="/new">Add your first note</a>!</p>
+    <% } else { %>
+      <ul>
+        <% books.forEach(book => { %>
+          <li>
+            <h3><%= book.book_name %></h3>
+            <p><strong>Author:</strong> <%= book.book_author %></p>
+            <p><%= book.notes_content %></p>
+            <form class="delete-form" action="/delete" method="POST">
+              <input type="hidden" name="id" value="<%= book.id %>">
+              <button class="delete-btn" type="submit">🗑️ Delete</button>
+            </form>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </section>
 </body>
 </html>
